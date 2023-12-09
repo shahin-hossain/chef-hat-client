@@ -8,7 +8,7 @@ const Recipe = ({ recipe }) => {
                 <div className="card-body">
                     <h2 className="card-title text-teal-700">{recipe_name}</h2>
                     <h4 className='font-bold'>ingredients:</h4>
-                    {ingredients.map(ingredient => <span>{ingredient},</span>)}
+                    {ingredients.map((ingredient, idx) => <span key={idx}>{ingredient},</span>)}
                     <p><span className='font-bold'>Instruction:</span> {instructions}</p>
                 </div>
             </div>

@@ -1,19 +1,21 @@
-import React from 'react';
-import Navbar from '../../shared/Navbar/Navbar';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { GoHeartFill } from "react-icons/go";
 import Recipe from '../Recipe/Recipe';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const ChefDetails = () => {
     const chef = useLoaderData();
     const { photo, name, description, experience, likes, recipes } = chef;
-    console.log(chef)
+
+    const { user } = useContext(AuthContext);
+    console.log(user)
 
     return (
         <div >
             <div className='relative'>
                 <img src="https://mybayutcdn.bayut.com/mybayut/wp-content/uploads/Top-5-Michelin-Star-Chef-Restaurants-In-Dubai-Cover-17-10.jpg" alt="" />
-                <h2 className='text-teal-50 font-bold text-5xl text-center my-5 absolute top-1/2 start-40'>Details the Popular Chef's {name}</h2>
+                <h2 className='text-teal-50 font-bold text-5xl text-center my-5 absolute top-1/2 start-40'>Details of the Popular Chef {name}</h2>
             </div>
             <div className='grid gird-cols-1 md:grid-cols-2 mt-20'>
                 {/* chef card */}
@@ -34,7 +36,8 @@ const ChefDetails = () => {
                 <div>
                     <h2 className='text-3xl text-teal-700 font-bold'>{name}'s Popular Recipes</h2>
                     {
-                        recipes.map(recipe => <Recipe
+                        recipes.map((recipe, idx) => <Recipe
+                            key={idx}
                             recipe={recipe}
                         ></Recipe>)
                     }
