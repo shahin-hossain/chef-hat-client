@@ -2,10 +2,11 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa'
 import { AuthContext } from '../../providers/AuthProvider';
+import { FaGithub } from 'react-icons/fa6';
 
 const Login = () => {
     const { error, setError } = useState('');
-    const { userLogin, googleLogin } = useContext(AuthContext);
+    const { userLogin, googleLogin, githubLogin } = useContext(AuthContext);
     const navigate = useNavigate();
     //login with email & password
     const handleLogin = (event) => {
@@ -33,6 +34,18 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
+                navigate('/')
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+    //github login 
+    const handleGithubLogin = () => {
+        githubLogin()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
                 navigate('/')
             })
             .catch(error => {
@@ -67,8 +80,10 @@ const Login = () => {
                                 <button type='submit' className="btn bg-gradient-to-r from-teal-500 to-teal-900 text-white">Login</button>
                             </div>
                             <p className='text-center'><small>Have you no account? Please <Link to='/login' className='link text-teal-800'> Register</Link></small></p>
+                            <p className='text-center text-red-500'><small>{error}</small></p>
                         </form>
                         <button onClick={handleGoogleLogin} className='btn bg-gradient-to-r from-sky-500 to-sky-600 mb-5 mx-8 text-white'> <FaGoogle /> Continue with Google</button>
+                        <button onClick={handleGithubLogin} className='btn bg-gradient-to-r from-slate-600 to-slate-800 mb-5 mx-8 text-white'> <FaGithub /> Continue with Github</button>
                     </div>
                 </div>
             </div>
