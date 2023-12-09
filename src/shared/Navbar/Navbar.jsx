@@ -4,7 +4,11 @@ import { FaCircleUser } from 'react-icons/fa6'
 import { LuChefHat } from 'react-icons/lu'
 import { AuthContext } from '../../providers/AuthProvider';
 const Navbar = () => {
-    const { logOut, user } = useContext(AuthContext);
+    const { logOut, user, loading } = useContext(AuthContext);
+
+    if (loading) {
+        return;
+    }
 
     const handleLogOut = () => {
         logOut()
