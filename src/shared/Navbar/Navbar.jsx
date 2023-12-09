@@ -22,7 +22,7 @@ const Navbar = () => {
 
                 {
                     user ? <>
-                        {user.photoURL ? <div data-tip={user.displayName} className="tooltip tooltip-bottom"><img src={user.photoURL} style={{ width: '50px' }} className='rounded-full inline me-3 tooltip' alt="user image" /></div> : <span><FaCircleUser className='text-5xl text-teal-500 inline me-3' /></span>}
+                        {user.photoURL ? <div data-tip={user.displayName} className="tooltip tooltip-bottom"><img src={user.photoURL} style={{ width: '50px', height: '50px' }} className='rounded-full inline me-3 tooltip' alt="user image" /></div> : <span><FaCircleUser className='text-5xl text-teal-500 inline me-3' /></span>}
                         <button onClick={handleLogOut} className='font-bold text-lg bg-gradient-to-r from-teal-500 to-teal-800 text-white py-1 px-5 rounded-lg me-3'>Logout</button>
                     </>
                         : <>

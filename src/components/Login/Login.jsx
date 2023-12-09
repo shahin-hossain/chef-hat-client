@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa'
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
-
-    const { userLogin } = useContext(AuthContext);
+    const { error, setError } = useState('');
+    const { userLogin, googleLogin } = useContext(AuthContext);
     const navigate = useNavigate();
-
+    //login with email & password
     const handleLogin = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -21,9 +21,23 @@ const Login = () => {
                 navigate('/');
             })
             .catch(error => {
+                setError(error)
                 console.log(error)
             })
 
+
+    }
+    //login with google
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
+                navigate('/')
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
     return (
         <section>
@@ -54,7 +68,7 @@ const Login = () => {
                             </div>
                             <p className='text-center'><small>Have you no account? Please <Link to='/login' className='link text-teal-800'> Register</Link></small></p>
                         </form>
-                        <button className='btn bg-gradient-to-r from-sky-500 to-sky-600 mb-5 mx-8 text-white'> <FaGoogle /> Continue with Google</button>
+                        <button onClick={handleGoogleLogin} className='btn bg-gradient-to-r from-sky-500 to-sky-600 mb-5 mx-8 text-white'> <FaGoogle /> Continue with Google</button>
                     </div>
                 </div>
             </div>
