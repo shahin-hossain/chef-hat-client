@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
-
     const [error, setError] = useState('');
+    const [accept, setAccept] = useState(false);
 
     const { userRegister, setUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -17,10 +17,18 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confirm = form.confirm.value;
+        const emailTest = /^\S+@\S+\.\S+$/;
 
         if (password !== confirm) {
             return setError('Confirm did not match')
         }
+        else if (password < 8) {
+            return setError('Password will be at least 8 character')
+        }
+        else if (!emailTest.test(email)) {
+            return setError('invalid email')
+        }
+
 
         userRegister(email, password)
             .then(result => {
@@ -32,7 +40,13 @@ const Register = () => {
             .catch(error => {
                 console.log(error);
             })
+    }
+    const handleAccept = (event) => {
 
+        const check = event.target.value;
+        if (check) {
+            setAccept(!accept)
+        }
     }
 
     return (
@@ -76,12 +90,12 @@ const Register = () => {
                             </div>
                             <div className="form-control">
                                 <label className="cursor-pointer label">
-                                    <input type="checkbox" className="checkbox" />
+                                    <input onClick={handleAccept} type="checkbox" className="checkbox" name='accept' />
                                     <span className="label-text">Agree to <Link to='/terms' className='link link-info'>Terms & Condition</Link></span>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button type='submit' className="btn bg-gradient-to-r from-teal-500 to-teal-900 text-white">Register</button>
+                                <button type='submit' className="btn bg-gradient-to-r from-teal-500 to-teal-900 text-white " disabled={!accept} >Register</button>
                             </div>
                             <p className='text-center'><small>Already have an account? <Link to='/login' className='link text-teal-800'>login</Link></small></p>
                             <p className='text-center text-red-500'>{error}</p>
