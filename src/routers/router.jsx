@@ -6,6 +6,7 @@ import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
 
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
             {
                 path: '/terms',
                 element: <Terms></Terms>
+            },
+            {
+                path: '*',
+                element: <ErrorPage />
+
             }
         ]
 
