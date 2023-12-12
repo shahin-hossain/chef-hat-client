@@ -22,7 +22,7 @@ const Register = () => {
         if (password !== confirm) {
             return setError('Confirm did not match')
         }
-        else if (password < 8) {
+        else if (password.length < 8) {
             return setError('Password will be at least 8 character')
         }
         else if (!emailTest.test(email)) {

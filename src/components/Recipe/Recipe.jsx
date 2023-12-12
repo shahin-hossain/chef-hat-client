@@ -26,7 +26,6 @@ const Recipe = ({ recipe }) => {
                     <p><span className='font-bold'>Instruction:</span> {instructions}</p>
                 </div>
                 <Toaster />
-                <button className='btn btn-square bg-slate-400 ' disabled>Hello</button>
             </div>
         </div >
     );
