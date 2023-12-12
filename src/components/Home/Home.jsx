@@ -45,7 +45,10 @@ const Home = () => {
 
             <OurRecipe />
 
-            <LocationMap />
+            <div>
+                <h2 className='text-4xl font-bold text-teal-500 text-center mb-16'>Find Our Location</h2>
+                <LocationMap />
+            </div>
         </div>
     );
 };

@@ -11,7 +11,7 @@ const Recipe = ({ recipe }) => {
             id: 'toastId',
         });
     }
-    console.log(favorite)
+    // console.log(favorite)
 
     return (
         <div>

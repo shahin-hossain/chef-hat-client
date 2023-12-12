@@ -26,8 +26,8 @@ const OurRecipe = ({ }) => {
 
     return (
 
-        <div className='my-24'>
-            <h2 className='text-4xl font-bold text-teal-500 text-center mb-10'>Our Provide Recipe Service</h2>
+        <div className='mt-24 md:mt-0 mb-24'>
+            <h2 className='text-4xl font-bold text-teal-500 text-center mb-16'>Our Provide Recipe Service</h2>
 
             <div className=''>
                 <ReactCardSlider slides={slides} />

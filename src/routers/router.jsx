@@ -7,6 +7,7 @@ import Register from "../components/Register/Register";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import Blog from "../components/Blog/Blog";
 
 const router = createBrowserRouter([
 
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
             {
                 path: '/terms',
                 element: <Terms></Terms>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>,
+                loader: () => fetch('http://localhost:5000/blog')
             },
             {
                 path: '*',
