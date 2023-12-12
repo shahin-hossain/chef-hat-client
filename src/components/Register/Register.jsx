@@ -29,7 +29,6 @@ const Register = () => {
             return setError('invalid email')
         }
 
-
         userRegister(email, password)
             .then(result => {
                 const createdUser = result.user;
@@ -88,6 +87,7 @@ const Register = () => {
                                 </label>
                                 <input type="password" placeholder="confirm password" name='confirm' className="input input-bordered" required />
                             </div>
+                            {/* accept handle */}
                             <div className="form-control">
                                 <label className="cursor-pointer label">
                                     <input onClick={handleAccept} type="checkbox" className="checkbox" name='accept' />

@@ -3,13 +3,12 @@ import ReactCardSlider from 'react-card-slider-component';
 
 const OurRecipe = ({ }) => {
     const [slides, setSlides] = useState([]);
+
     useEffect(() => {
         fetch('http://localhost:5000/recipe')
             .then(res => res.json())
             .then(data => handleSlider(data))
     }, [])
-
-
 
     const handleSlider = (recipes) => {
         const sliders = recipes;
@@ -19,7 +18,7 @@ const OurRecipe = ({ }) => {
             let slideObj = sliders[slide];
             slideObj.description = '';
             slides.push(slideObj);
-            console.log(slideObj)
+            // console.log(slideObj)
         }
         setSlides(slides)
 
@@ -30,7 +29,7 @@ const OurRecipe = ({ }) => {
         <div className='my-24'>
             <h2 className='text-4xl font-bold text-teal-500 text-center mb-10'>Our Provide Recipe Service</h2>
 
-            <div className='ms-20'>
+            <div className=''>
                 <ReactCardSlider slides={slides} />
             </div>
 
