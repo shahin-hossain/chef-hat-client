@@ -4,8 +4,8 @@ import { IoHeart } from "react-icons/io5";
 const Chef = ({ chef }) => {
     const { id, name, description, photo, experience, likes } = chef;
     return (
-        <div>
-            <div className="card w-96 bg-base-100 shadow-xl mb-6" style={{ height: '500px' }}>
+        <div >
+            <div className="card md:w-96 bg-base-100 shadow-xl mb-6" style={{ height: '500px' }}>
                 <figure><img src={photo} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{name}</h2>
