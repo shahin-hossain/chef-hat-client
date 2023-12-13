@@ -1,15 +1,11 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useLocation } from 'react-router-dom';
 import { GoHeartFill } from "react-icons/go";
 import Recipe from '../Recipe/Recipe';
-import { AuthContext } from '../../providers/AuthProvider';
 
 const ChefDetails = () => {
     const chef = useLoaderData();
     const { photo, name, description, experience, likes, recipes } = chef;
-
-    const { user } = useContext(AuthContext);
-    console.log(user)
 
     return (
         <div >

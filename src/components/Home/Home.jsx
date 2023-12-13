@@ -4,7 +4,7 @@ import Chef from '../Chef/Chef';
 import ChefHire from '../ChefHire/ChefHire';
 import LocationMap from '../LocationMap/LocationMap';
 import OurRecipe from '../OurRecipe/OurRecipe';
-
+import LazyLoad from 'react-lazy-load';
 
 const Home = () => {
 
@@ -17,38 +17,43 @@ const Home = () => {
             .then(data => setChefs(data))
     }, [])
 
-
-
-
-
-
-
-
     return (
         <div>
             <Header></Header>
-            {/* chef component start */}
-            <div className='my-16 '>
-                <h2 className='text-teal-500 font-bold text-4xl text-center'>Middle East's Popular Chef</h2>
-                <div className='grid grid-cols-1 justify-items-center md:grid-cols-3 gap-4 mt-10'>
-                    {
-                        chefs.map(chef => <Chef
-                            key={chef.id}
-                            chef={chef}
-                        ></Chef>)
-                    }
+            <LazyLoad>
+                {/* chef component start */}
+                <div className='my-16 '>
+                    <h2 className='text-teal-500 font-bold text-4xl text-center'>Middle East's Popular Chef</h2>
+                    <div className='grid grid-cols-1 justify-items-center md:grid-cols-3 gap-4 mt-10'>
+                        {
+                            chefs.map(chef => <Chef
+                                key={chef.id}
+                                chef={chef}
+                            ></Chef>)
+                        }
+                    </div>
                 </div>
+            </LazyLoad>
 
-            </div>
-            {/* chef hire */}
-            <ChefHire></ChefHire>
+            <LazyLoad>
+                {/* chef hire */}
 
-            <OurRecipe />
+                <ChefHire></ChefHire>
+            </LazyLoad>
 
-            <div>
-                <h2 className='text-4xl font-bold text-teal-500 text-center mb-16'>Find Our Location</h2>
-                <LocationMap />
-            </div>
+
+
+            <LazyLoad>
+                <OurRecipe />
+            </LazyLoad>
+
+            <LazyLoad>
+                <div>
+                    <h2 className='text-4xl font-bold text-teal-500 text-center mb-16'>Find Our Location</h2>
+                    <LocationMap />
+                </div>
+            </LazyLoad>
+
         </div>
     );
 };

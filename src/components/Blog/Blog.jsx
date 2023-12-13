@@ -13,7 +13,7 @@ const Blog = () => {
             <div className='w-10/12 mx-auto mt-10'>
                 {
                     blogs.map(blog =>
-                        <div className="hero bg-base-200">
+                        <div key={blog.id} className="hero bg-base-200">
                             <div className="hero-content ">
                                 <div>
                                     <h1 className="text-4xl text-teal-500 font-bold">{blog.title}</h1>
