@@ -12,7 +12,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/chefs')
+        fetch('https://chef-hat-server.vercel.app/chefs')
             .then(res => res.json())
             .then(data => setChefs(data))
     }, [])
@@ -40,8 +40,6 @@ const Home = () => {
 
                 <ChefHire></ChefHire>
             </LazyLoad>
-
-
 
             <LazyLoad>
                 <OurRecipe />

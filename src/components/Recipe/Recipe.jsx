@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaBookmark } from "react-icons/fa6";
 import toast, { Toaster } from 'react-hot-toast';
 const Recipe = ({ recipe }) => {
+
     const { recipe_name, instructions, ingredients } = recipe;
     const [favorite, setFavorite] = useState(false);
 

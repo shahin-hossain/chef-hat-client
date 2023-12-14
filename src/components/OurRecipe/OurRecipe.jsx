@@ -5,7 +5,7 @@ const OurRecipe = ({ }) => {
     const [slides, setSlides] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/recipe')
+        fetch('https://chef-hat-server.vercel.app/recipe')
             .then(res => res.json())
             .then(data => handleSlider(data))
     }, [])
